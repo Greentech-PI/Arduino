@@ -16,7 +16,7 @@ const AMBIENTE = 'desenvolvimento';
 //variavel para prototipo -- AINDA NÃO FUNCIONA
 // const AMBIENTE = 'prototipo';
 
-if(AMBIENTE == 'prototipo'){
+/* if(AMBIENTE == 'prototipo'){
     console.log("AMBIENTE: PROTOTIPO");
     poolBancoDados = mysql.createPool(
         {
@@ -52,7 +52,7 @@ if(AMBIENTE == 'prototipo'){
         }, 1000);
     }
     
-}else{
+}else{ */
     const serial = async (
         valoresDht11Umidade,
         valoresDht11Temperatura,
@@ -117,10 +117,10 @@ if(AMBIENTE == 'prototipo'){
     
                     // Este insert irá inserir os dados na tabela "medida" -> altere se necessário
                     // Este insert irá inserir dados de fk_aquario id=1 >> você deve ter o aquario de id 1 cadastrado.
-                    sqlquery = `INSERT INTO medida (dht11_umidade, dht11_temperatura, luminosidade, lm35_temperatura, chave, momento, fk_aquario) VALUES (${dht11Umidade}, ${dht11Temperatura}, ${luminosidade}, ${lm35Temperatura}, ${chave}, CURRENT_TIMESTAMP, 1)`;
+                    sqlquery = `INSERT INTO MonitoramentoSensor (dht11_temperatura, dht11_umidade, luminosidade, lm35_temperatura, chave, momento, fkEmpresa,fkEstufa) VALUES (${dht11Umidade}, ${dht11Temperatura}, ${luminosidade}, ${lm35Temperatura}, ${chave}, CURRENT_TIMESTAMP, 1)`;
     
                     // CREDENCIAIS DO BANCO REMOTO - SQL SERVER
-                    const connStr = "Server=servidor-acquatec.database.windows.net;Database=bd-acquatec;User Id=usuarioParaAPIArduino_datawriter;Password=#Gf_senhaParaAPI;";
+                    const connStr = "Server=grupo1-1cco.database.windows.net;User = grupo1-1cco;Password=#GfgrupoGreentech;";
     
                     function inserirComando(conn, sqlquery) {
                         conn.query(sqlquery);
@@ -209,4 +209,4 @@ if(AMBIENTE == 'prototipo'){
         );
     })();
     
-}
+/* } */
